@@ -1,0 +1,65 @@
+<fieldset class="solid">
+	<legend>
+	创建API
+	<#if (api.id)??>
+	<a href="/api/detail/${api.id}">详情</a>
+	</#if>
+	</legend>
+	<input type="hidden" name="api.id" value="${(api.id)!}" />
+	<div>
+		<label>隶属项目</label>
+		<select name="api.project_id">
+			<#list projectList as x>
+			<option value="${x.id}" <#if (api.project_id)?? && api.project_id=x.id>selected="selected"</#if> >
+			${x.project_name}
+			</option>
+			</#list>
+		</select>
+		${project_idMsg!}
+	</div>
+	<div>
+		<label>API名称</label>
+		<input type="text" name="api.api_name" value="${(api.api_name)!}" />
+		${api_nameMsg!}
+	</div>
+	<div>
+		<label>API说明</label>
+		<input type="text" name="api.api_comment" value="${(api.api_comment)!}" />
+		${api_commentMsg!}
+	</div>
+	<div>
+		<label>URL</label>
+		<input type="text" name="api.api_url" value="${(api.api_url)!}" />
+		${api_urlMsg!}
+	</div>
+	<div>
+		<label>请求方式</label>
+		<select name="api.api_type">
+			<#list apiTypeList as x>
+			<option value="${x.code}" <#if (api.api_type)?? && api.api_type=x.code>selected="selected"</#if> >
+			${x.name}
+			</option>
+			</#list>
+		</select>
+		${api_typeMsg!}
+	</div>
+	<div>
+		<label>请求参数</label>
+		<textarea name="api.api_request_param">${(api.api_request_param)!}</textarea>
+		${api_request_paramMsg!}
+	</div>
+	<div>
+		<label>响应参数</label>
+		<textarea name="api.api_response_param">${(api.api_response_param)!}</textarea>
+		${api_response_paramMsg!}
+	</div>
+	<div>
+		<label>排序</label>
+		<input type="text" name="api.api_index" value="${(api.api_index)!}" />
+		${api_indexMsg!}
+	</div>
+	<div>
+		<label>&nbsp;</label>
+		<input value="提交" type="submit">
+	</div>
+</fieldset>

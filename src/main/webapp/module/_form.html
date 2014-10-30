@@ -1,0 +1,27 @@
+<fieldset class="solid">
+	<legend>创建表</legend>
+	<input type="hidden" name="module.id" value="${(module.id)!}" />
+	<div>
+		<label>隶属项目</label>
+		<select name="module.project_id">
+			<#list projectList as x>
+			<option value="${x.id}" <#if (module.project_id)?? && module.project_id=x.id>selected="selected"</#if> >
+			${x.project_name}
+			</option>
+			</#list>
+		</select>
+		${project_idMsg!}
+	</div>
+	<div>
+		<label>表名称</label>
+		<input type="text" name="module.table_name" value="${(module.table_name)!}" />${table_nameMsg!}
+	</div>
+	<div>
+		<label>排序</label>
+		<input type="text" name="module.table_index" value="${(module.table_index)!}" />${table_indexMsg!}
+	</div>
+	<div>
+		<label>&nbsp;</label>
+		<input value="提交" type="submit">
+	</div>
+</fieldset>

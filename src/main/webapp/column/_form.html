@@ -1,0 +1,53 @@
+<fieldset class="solid">
+	<legend>创建列</legend>
+	<input type="hidden" name="column.id" value="${(column.id)!}" />
+	<div>
+		<label>隶属项目</label>
+		<select name="project_id" id="project_id">
+			<#list projectList as x>
+			<option value="${x.id}" <#if (column.getTable().getProject())?? && column.getTable().getProject().id=x.id>selected="selected"</#if> >
+			${x.project_name}
+			</option>
+			</#list>
+		</select>
+		${project_idMsg!}
+	</div>
+	<div>
+		<label>隶属表</label>
+		<select name="column.table_id" id="table_id">
+		</select>
+		${project_idMsg!}
+	</div>
+	<div>
+		<label>列名</label>
+		<input type="text" name="column.column_name" value="${(column.column_name)!}" />${column_nameMsg!}
+	</div>
+	<div>
+		<label>排序</label>
+		<input type="text" name="column.column_index" value="${(column.column_index)!}" />${column_indexMsg!}
+	</div>
+	<div>
+		<label>&nbsp;</label>
+		<input value="提交" type="submit">
+	</div>
+</fieldset>
+<script type="text/javascript">
+$(document).ready(function(){
+	var initSel = function(callback){
+		SelectTool.initSelectData({
+			elId:"table_id",
+			url:"/table/listByProjectId",
+			postData:{"project_id":$("#project_id").val()},
+			valueName:"id",
+			textName:"table_name",
+			defaultValue:"${(column.table_id)!}",
+			callback:callback
+		});
+	}
+	$("#project_id").change(function(){
+		initSel(function(){});
+	});
+	
+	initSel(function(){});
+});
+</script>

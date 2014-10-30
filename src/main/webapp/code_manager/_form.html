@@ -1,0 +1,34 @@
+<fieldset class="solid">
+	<legend>创建常量</legend>
+	<input type="hidden" name="codeManager.id" value="${(codeManager.id)!}" />
+	<div>
+		<label>命名空间</label>
+		<select name="codeManager.namespace">
+			<#list namespaceList as x>
+			<option value="${x.code}">${x.name}</option>
+			</#list>
+		</select>
+		${codeManager_namespaceMsg!}
+	</div>
+	<div>
+		<label>名称</label>
+		<input type="text" name="codeManager.name" value="${(codeManager.name)!}" />${codeManager_nameMsg!}
+	</div>
+	<div>
+		<label>Code</label>
+		<input type="text" name="codeManager.code" value="${(codeManager.code)!}" />${codeManager_codeMsg!}
+	</div>
+	<div>
+		<label>上级</label>
+		<select name="codeManager.father_id">
+			<#list fatherIdList as x>
+			<option value="${x.code}">${x.name}</option>
+			</#list>
+		</select>
+		${codeManager_namespaceMsg!}
+	</div>
+	<div>
+		<label>&nbsp;</label>
+		<input value="提交" type="submit">
+	</div>
+</fieldset>

@@ -1,0 +1,9 @@
+INSERT INTO `code_manager` VALUES ('1', '命名空间', '-1', 'Namespace', 'Namespace', null, null,10086);
+INSERT INTO `code_manager` VALUES ('2', '全部', '-1', null, 'All', null, null,10086);
+INSERT INTO `code_manager` VALUES ('3', '无', '-1', '-1', 'None', null, null,10086);
+INSERT INTO `code_manager` VALUES ('4', 'HTTP请求_命名空间', '-1', 'HTTP_Method', 'Namespace', null, null,10086);
+INSERT INTO `code_manager` VALUES ('5', 'GET', '-1', 'GET', 'HTTP_Method', null, null,10086);
+INSERT INTO `code_manager` VALUES ('6', 'POST', '-1', 'POST', 'HTTP_Method', null, null,10086);
+INSERT INTO `code_manager` VALUES ('7', '参数请求响应_命名空间', '-1', 'paramForType', 'Namespace', null, null,10086);
+INSERT INTO `code_manager` VALUES ('8', '请求', '-1', 'request', 'paramForType', null, null,10086);
+INSERT INTO `code_manager` VALUES ('9', '响应', '-1', 'response', 'paramForType', null, null,10086);

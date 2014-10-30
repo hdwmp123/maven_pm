@@ -1,0 +1,29 @@
+<table class="list">
+	<tbody>
+		<tr>
+			<th width="4%">主键</th>
+			<th width="10%">列名</th>
+			<th width="10%">据类型</th>
+			<th width="5%">为空</th>
+			<th width="20%">注释</th>
+			<th width="5%">排序</th>
+			<th width="12%">操作</th>
+		</tr>
+		<#list columnPage.getList() as x>
+		<tr>
+			<td style="text-align:left;">${x.id}</td>
+			<td style="text-align:left;">${x.column_name}</td>
+			<td style="text-align:left;">${(x.column_type)!}</td>
+			<td style="text-align:left;">${(x.is_nullable)!}</td>
+			<td style="text-align:left;">${(x.column_comment)!}</td>
+			<td style="text-align:left;">${x.column_index}</td>
+			<td style="text-align:left;">
+				&nbsp;&nbsp;<a href="/column/delete/${x.id}">删除</a>
+				&nbsp;&nbsp;<a href="/column/edit/${x.id}">修改</a>
+			</td>
+		</tr>
+		</#list>
+	</tbody>
+</table>
+<#include "/common/_paginate.html" />
+<@paginate currentPage=columnPage.pageNumber totalPage=columnPage.totalPage actionUrl="/column/" urlParas="${urlParas!}"/>

@@ -1,0 +1,34 @@
+<#include "/common/_layout.html"/>
+<@layout>
+<h1>API管理&nbsp;&nbsp;
+<a href="/api/add">创建API</a>
+</h1>
+<div class="search_box">
+	<form action="/api/page" id="search_form" method="get">
+		<select name="project_id" id="project_id">
+			<#list projectList as x>
+			<option value="${x.id}" <#if (project_id)?? && project_id=x.id>selected="selected"</#if> >
+			${x.project_name}
+			</option>
+			</#list>
+		</select>
+		<input value="查询" type="button" id="search_button">
+	</form>
+</div>
+<div class="table_box" id="table_box">
+</div>
+</@layout>
+<script type="text/javascript">
+$(document).ready(function(){
+	var initSearch = function(){
+		SearchTool.search({
+			formId:"search_form",
+			updatePanelId:"table_box"
+		});
+	}
+	$("#search_button").click(function(){
+		initSearch();
+	});
+	initSearch();
+});
+</script>

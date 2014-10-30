@@ -1,0 +1,39 @@
+<#include "/common/_layout.html" />
+<@layout>
+<h1><a href="/api"><b>API管理</b></a>--&gt; API详情</h1>
+<div class="form_box">
+    <form action="/api/save" method="post">
+        <fieldset class="solid">
+            <legend>API详情 &nbsp;<a href="/api/edit/${api.id}">修改</a></legend>
+            <input type="hidden" name="api.id" value="${(api.id)!}" />
+            <div>
+                <label>隶属项目：</label>${(api.getProject().project_name)!}
+            </div>
+            <div>
+                <label>API名称：</label>${(api.api_name)!}
+            </div>
+            <div>
+                <label>API说明：</label>${(api.api_comment)!}
+            </div>
+            <div>
+                <label>URL：</label>${(api.api_url)!}
+            </div>
+            <div>
+                <label>请求方式：</label>${(api.api_type)!}
+            </div>
+            <div>
+                <label>请求参数：</label>
+                <div>
+                <pre class="brush:java;">${(api.api_request_param)!}</pre>
+                </div>
+            </div>
+            <div>
+                <label>响应参数：</label>
+                <div>
+                    <pre class="brush:java;">${(api.api_response_param)!}</pre>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+</@layout>
