@@ -4,7 +4,12 @@
 <div class="form_box">
     <form action="/api/save" method="post">
         <fieldset class="solid">
-            <legend>API详情 &nbsp;<a href="/api/edit/${api.id}">修改</a></legend>
+            <legend>API详情 &nbsp;
+            <#if (api.id)??>
+            <a href="/api/edit/${api.id}">修改</a></legend>
+            <#else>
+            <a href="/api/add">新建</a></legend>
+            </#if>
             <input type="hidden" name="api.id" value="${(api.id)!}" />
             <div>
                 <label>隶属项目：</label>${(api.getProject().project_name)!}

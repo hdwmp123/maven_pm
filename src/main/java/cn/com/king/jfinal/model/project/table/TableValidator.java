@@ -17,9 +17,10 @@ public class TableValidator extends Validator {
 	protected void handleError(Controller controller) {
 		controller.keepModel(Table.class);
 		String actionKey = getActionKey();
-		if (actionKey.equals("/table/save"))
+		if (actionKey.equals("/table/save")) {
 			controller.render("add.html");
-		else if (actionKey.equals("/table/update"))
+		} else if (actionKey.equals("/table/update")) {
 			controller.render("edit.html");
+		}
 	}
 }

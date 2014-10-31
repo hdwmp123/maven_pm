@@ -1,36 +1,24 @@
 <#include "/common/_layout.html"/>
+<#include "/common/_search_form.html"/>
 <@layout>
 <h1>列管理&nbsp;&nbsp;
 <a href="/column/add">创建列</a>
 </h1>
-<div class="search_box">
-	<form action="/column/page" id="search_form" method="get">
-		<select name="project_id" id="project_id">
-			<#list projectList as x>
-			<option value="${x.id}" <#if (project_id)?? && project_id=x.id>selected="selected"</#if> >
-			${x.project_name}
-			</option>
-			</#list>
-		</select>
-		<select name="table_id" id="table_id"></select>
-		<input value="查询" type="button" id="search_button">
-	</form>
-</div>
-<div class="table_box" id="table_box">
-</div>
+<@search_form actionUrl="/column/page" initSearch=false>
+隶属项目：
+<select name="project_id" id="project_id">
+	<#list projectList as x>
+	<option value="${x.id}" <#if (project_id)?? && project_id=x.id>selected="selected"</#if> >
+	${x.project_name}
+	</option>
+	</#list>
+</select>
+表：
+<select name="table_id" id="table_id"></select>
+</@search_form>
 </@layout>
 <script type="text/javascript">
 	$(document).ready(function(){
-		var initSearch = function(){
-			SearchTool.search({
-				formId:"search_form",
-				updatePanelId:"table_box"
-			});
-		}
-		$("#search_button").click(function(){
-			initSearch();
-		});
-		
 		var initSel = function(callback){
 			SelectTool.initSelectData({
 				elId:"table_id",
@@ -47,7 +35,7 @@
 		});
 		
 		initSel(function(){
-			initSearch();
+			initSearch(1);
 		});
 	});
 </script>

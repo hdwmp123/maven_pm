@@ -9,9 +9,6 @@ public class CodeManager extends Model<CodeManager> {
 
 	public static final CodeManager dao = new CodeManager();
 
-	public CodeManager() {
-	}
-
 	public Page<CodeManager> paginate(int pageNumber, int pageSize) {
 		return paginate(pageNumber, pageSize, "select *",
 				"from code_manager order by id asc");
@@ -24,7 +21,7 @@ public class CodeManager extends Model<CodeManager> {
 	public List<CodeManager> listByNamespace(String namespace) {
 		return find(
 				"select * from code_manager a where a.namespace=? order by id asc",
-				new Object[] { namespace });
+				namespace);
 	}
 
 }

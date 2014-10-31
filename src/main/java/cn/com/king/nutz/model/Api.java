@@ -3,6 +3,7 @@ package cn.com.king.nutz.model;
 import java.util.Date;
 
 import org.nutz.dao.entity.annotation.ColDefine;
+import org.nutz.dao.entity.annotation.ColType;
 import org.nutz.dao.entity.annotation.Comment;
 import org.nutz.dao.entity.annotation.Id;
 import org.nutz.dao.entity.annotation.Table;
@@ -29,11 +30,11 @@ public class Api {
 	public String api_url;
 
 	@Comment("API请求方式")
-	@ColDefine(width = 200)
+	@ColDefine(type=ColType.TEXT)
 	public String api_request_param;
 
 	@Comment("API请求参数")
-	@ColDefine(width = 200)
+	@ColDefine(type=ColType.TEXT)
 	public String api_response_param;
 
 	@Comment("API响应参数")

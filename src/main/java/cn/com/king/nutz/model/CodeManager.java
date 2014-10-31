@@ -14,7 +14,7 @@ public class CodeManager {
 	@Comment("主键")
 	public int id;
 
-	@Comment("API名称")
+	@Comment("名称")
 	@ColDefine(width = 200)
 	public String name;
 

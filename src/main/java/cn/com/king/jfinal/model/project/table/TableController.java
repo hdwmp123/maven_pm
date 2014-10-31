@@ -1,5 +1,7 @@
 package cn.com.king.jfinal.model.project.table;
 
+import cn.com.king.jfinal.util.Constant;
+
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import java.util.Date;
@@ -8,15 +10,13 @@ import java.util.List;
 @Before(TableInterceptor.class)
 public class TableController extends Controller {
 
-
 	public void index() {
 		render("list.html");
 	}
 
 	public void page() {
-		setAttr("tablePage", Table.dao.paginate(
-				getParaToInt(0, Integer.valueOf(1)).intValue(), 10,
-				getParaToInt("project_id", Integer.valueOf(-1)).intValue()));
+		setAttr("tablePage", Table.dao.paginate(getParaToInt("page_index", -1),
+				Constant.PAGE_SIZE, getParaToInt("project_id", -1)));
 		render("list-table.html");
 	}
 
@@ -26,10 +26,10 @@ public class TableController extends Controller {
 
 	@Before(TableValidator.class)
 	public void save() {
-		Table bean = (Table) getModel(Table.class);
+		Table bean = getModel(Table.class);
 		bean.set("created", new Date());
 		bean.save();
-		redirect("/table");
+		index();
 	}
 
 	public void edit() {
@@ -39,17 +39,17 @@ public class TableController extends Controller {
 	@Before(TableValidator.class)
 	public void update() {
 		getModel(Table.class).update();
-		redirect("/table");
+		index();
 	}
 
 	public void delete() {
 		Table.dao.deleteById(getParaToInt());
-		redirect("/table");
+		index();
 	}
 
 	public void listByProjectId() {
 		List<Table> list = Table.dao.listByProjectId(getParaToInt("project_id",
-				Integer.valueOf(-1)));
+				-1));
 		renderJson(list);
 	}
 }

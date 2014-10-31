@@ -1,0 +1,29 @@
+<#macro search_form actionUrl="" initSearch=true>
+<script type="text/javascript">
+var initSearch = function(page_index){
+    $("#page_index").val(page_index);
+    SearchTool.search({
+        formId:"search_form",
+        updatePanelId:"table_box"
+    });
+}
+
+$(document).ready(function(){
+    $("#search_button").click(function(){
+        initSearch($("#page_index").val());
+    });
+    <#if initSearch>
+    initSearch(1);
+    </#if>
+});
+</script>
+<div class="search_box">
+    <form action="${actionUrl}" id="search_form" method="get">
+        <input name="page_index" id="page_index" type="hidden" value="1" >
+        <#nested>
+        <input value="查询" type="button" id="search_button">
+    </form>
+</div>
+<div class="table_box" id="table_box">
+</div>
+</#macro>

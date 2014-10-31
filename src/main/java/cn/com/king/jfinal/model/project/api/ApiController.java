@@ -1,5 +1,6 @@
 package cn.com.king.jfinal.model.project.api;
 
+import cn.com.king.jfinal.util.Constant;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
@@ -13,8 +14,7 @@ public class ApiController extends Controller {
 	}
 
 	public void page() {
-		setAttr("apiPage", Api.dao.paginate(getParaToInt(0, Integer.valueOf(1))
-				.intValue(), 10));
+		setAttr("apiPage", Api.dao.paginate(getParaToInt("page_index", 1), Constant.PAGE_SIZE));
 		render("list-table.html");
 	}
 
@@ -27,7 +27,7 @@ public class ApiController extends Controller {
 		Api bean = getModel(Api.class);
 		bean.set("created", new Date());
 		bean.save();
-		redirect("/api");
+		index();
 	}
 
 	public void edit() {
@@ -37,15 +37,16 @@ public class ApiController extends Controller {
 	@Before(ApiValidator.class)
 	public void update() {
 		getModel(Api.class).update();
-		redirect("/api");
+		index();
 	}
 
 	public void delete() {
 		Api.dao.deleteById(getParaToInt());
-		redirect("/api");
+		index();
 	}
 
 	public void detail() {
 		setAttr("api", Api.dao.findById(getParaToInt()));
+		render("detail.html");
 	}
 }

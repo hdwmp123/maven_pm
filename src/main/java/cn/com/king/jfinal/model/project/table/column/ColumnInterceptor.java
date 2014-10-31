@@ -20,5 +20,9 @@ public class ColumnInterceptor implements Interceptor {
 
 	private void initSel(Controller controller) {
 		controller.setAttr("projectList", Project.dao.listAll());
+		int table_id = controller.getParaToInt("table_id", -1);
+		if (table_id > 0) {
+			controller.setAttr("table_id", table_id);
+		}
 	}
 }

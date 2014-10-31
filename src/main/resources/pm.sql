@@ -3,7 +3,7 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `code_manager`;
 CREATE TABLE `code_manager` (
   `id` int(32) NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `name` varchar(200) DEFAULT NULL COMMENT 'API名称',
+  `name` varchar(200) DEFAULT NULL COMMENT '名称',
   `father_id` int(32) DEFAULT NULL COMMENT '父级ID',
   `code` varchar(200) DEFAULT NULL COMMENT '代码程序识别',
   `namespace` varchar(200) DEFAULT NULL COMMENT '命名空间',
@@ -39,8 +39,8 @@ CREATE TABLE `project_api` (
   `module_id` int(32) DEFAULT NULL COMMENT '隶属模块ID',
   `api_name` varchar(200) DEFAULT NULL COMMENT 'API名称',
   `api_url` varchar(200) DEFAULT NULL COMMENT 'API地址',
-  `api_request_param` varchar(200) DEFAULT NULL COMMENT 'API请求方式',
-  `api_response_param` varchar(200) DEFAULT NULL COMMENT 'API请求参数',
+  `api_request_param` text DEFAULT NULL COMMENT 'API请求方式',
+  `api_response_param` text DEFAULT NULL COMMENT 'API请求参数',
   `api_type` varchar(200) DEFAULT NULL COMMENT 'API响应参数',
   `api_comment` varchar(200) DEFAULT NULL COMMENT '说明',
   `api_index` int(32) DEFAULT NULL COMMENT '排序',

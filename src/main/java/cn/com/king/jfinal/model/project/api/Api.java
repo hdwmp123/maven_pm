@@ -13,8 +13,8 @@ public class Api extends Model<Api> {
 	}
 
 	public Page<Api> paginate(int pageNumber, int pageSize) {
-		return paginate(pageNumber, pageSize, "select *",
-				"from project_api order by id asc");
+		return paginate(pageNumber, pageSize, "select a.*",
+				"from project_api a order by a.api_index asc");
 	}
 
 	public List<Api> listAll() {

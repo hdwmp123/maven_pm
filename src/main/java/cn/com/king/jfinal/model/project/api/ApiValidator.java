@@ -17,9 +17,10 @@ public class ApiValidator extends Validator {
 	protected void handleError(Controller controller) {
 		controller.keepModel(Api.class);
 		String actionKey = getActionKey();
-		if (actionKey.equals("/api/save"))
+		if (actionKey.equals("/api/save")) {
 			controller.render("add.html");
-		else if (actionKey.equals("/api/update"))
+		} else if (actionKey.equals("/api/update")) {
 			controller.render("edit.html");
+		}
 	}
 }
