@@ -1,19 +1,15 @@
 <table class="list">
     <tbody>
         <tr>
-            <th width="4%">主键</th>
-            <th width="5%">隶属项目</th>
             <th width="15%">API名称</th>
             <th width="20%">URL</th>
             <th width="5%">请求方式</th>
             <th width="5%">详情</th>
             <th width="3%">排序</th>
-            <th width="12%">操作</th>
+            <th width="8%">操作</th>
         </tr>
         <#list apiPage.getList() as x>
         <tr>
-            <td style="text-align:left;">${x.id}</td>
-            <td style="text-align:left;">${(x.getProject().project_name)!}</td>
             <td style="text-align:left;">${(x.api_name)!}</td>
             <td style="text-align:left;">${(x.api_url)!}</td>
             <td style="text-align:left;">${(x.api_type)!}</td>

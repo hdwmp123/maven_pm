@@ -27,7 +27,7 @@ public class Table extends Model<Table> {
 	}
 
 	public Project getProject() {
-		return Project.dao.getById(getInt("project_id").intValue());
+		return Project.dao.getById(getInt("project_id"));
 	}
 
 	public List<Table> listByProjectId(Integer projectId) {

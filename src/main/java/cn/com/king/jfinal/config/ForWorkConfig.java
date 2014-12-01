@@ -7,6 +7,8 @@ import cn.com.king.jfinal.model.project.Project;
 import cn.com.king.jfinal.model.project.ProjectController;
 import cn.com.king.jfinal.model.project.api.Api;
 import cn.com.king.jfinal.model.project.api.ApiController;
+import cn.com.king.jfinal.model.project.module.Module;
+import cn.com.king.jfinal.model.project.module.ModuleController;
 import cn.com.king.jfinal.model.project.table.Table;
 import cn.com.king.jfinal.model.project.table.TableController;
 import cn.com.king.jfinal.model.project.table.column.Column;
@@ -35,6 +37,7 @@ public class ForWorkConfig extends JFinalConfig {
     public void configRoute(Routes me) {
         me.add("/", CommonController.class);
         me.add("/project", ProjectController.class);
+        me.add("/module", ModuleController.class);
         me.add("/table", TableController.class);
         me.add("/column", ColumnController.class);
         me.add("/api", ApiController.class);
@@ -47,6 +50,7 @@ public class ForWorkConfig extends JFinalConfig {
         me.add(c3p0Plugin);
         ActiveRecordPlugin arp = new ActiveRecordPlugin(c3p0Plugin);
         arp.addMapping("project", Project.class);
+        arp.addMapping("project_module", Module.class);
         arp.addMapping("project_table", Table.class);
         arp.addMapping("table_column", Column.class);
         arp.addMapping("project_api", Api.class);

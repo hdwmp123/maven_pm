@@ -1,4 +1,13 @@
 <#macro search_form actionUrl="" initSearch=true>
+<div class="search_box">
+    <form action="${actionUrl}" id="search_form" method="get">
+        <input name="page_index" id="page_index" type="hidden" value="1" >
+        <#nested>
+        <input value="查询" type="button" id="search_button">
+    </form>
+</div>
+<div class="table_box" id="table_box">
+</div>
 <script type="text/javascript">
 var initSearch = function(page_index){
     $("#page_index").val(page_index);
@@ -17,13 +26,4 @@ $(document).ready(function(){
     </#if>
 });
 </script>
-<div class="search_box">
-    <form action="${actionUrl}" id="search_form" method="get">
-        <input name="page_index" id="page_index" type="hidden" value="1" >
-        <#nested>
-        <input value="查询" type="button" id="search_button">
-    </form>
-</div>
-<div class="table_box" id="table_box">
-</div>
 </#macro>

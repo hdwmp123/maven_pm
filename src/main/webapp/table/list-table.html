@@ -1,7 +1,6 @@
 <table class="list">
     <tbody>
         <tr>
-            <th width="4%">主键</th>
             <th width="10%">隶属项目</th>
             <th width="10%">表名称</th>
             <th width="10%">列</th>
@@ -10,7 +9,6 @@
         </tr>
         <#list tablePage.getList() as x>
         <tr>
-            <td style="text-align:left;">${x.id}</td>
             <td style="text-align:left;">${(x.getProject().project_name)!}</td>
             <td style="text-align:left;">${x.table_name}</td>
             <td style="text-align:left;"><a href="/column?project_id=${(x.getProject().id)!}&table_id=${x.id}">查看列</a></td>

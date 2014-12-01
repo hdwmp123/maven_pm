@@ -8,7 +8,7 @@
 	<input type="hidden" name="api.id" value="${(api.id)!}" />
 	<div>
 		<label>隶属项目</label>
-		<select name="api.project_id">
+		<select name="api.project_id" id="project_id">
 			<#list projectList as x>
 			<option value="${x.id}" <#if (api.project_id)?? && api.project_id=x.id>selected="selected"</#if> >
 			${x.project_name}
@@ -18,8 +18,14 @@
 		${project_idMsg!}
 	</div>
 	<div>
+		<label>隶属模块</label>
+		<select name="api.module_id" id="module_id">
+		</select>
+		${project_idMsg!}
+	</div>
+	<div>
 		<label>API名称</label>
-		<input type="text" name="api.api_name" value="${(api.api_name)!}" />
+		<input type="text" name="api.api_name" id="api_name" readonly="readonly" value="${(api.api_name)!}" />
 		${api_nameMsg!}
 	</div>
 	<div>
@@ -63,3 +69,25 @@
 		<input value="提交" type="submit">
 	</div>
 </fieldset>
+<script type="text/javascript">
+$(document).ready(function(){
+	var initSel = function(callback){
+		SelectTool.initSelectData({
+			elId:"module_id",
+			url:"/module/listByProjectId",
+			postData:{"project_id":$("#project_id").val()},
+			valueName:"id",
+			textName:"module_name",
+			defaultValue:"${(api.module_id)!}",
+			callback:callback
+		});
+	}
+	$("#project_id").change(function(){
+		initSel(function(){});
+	});
+	$("#module_id").change(function(){
+		$("#api_name").val($("#module_id option:selected").text());
+	});
+	initSel(function(){});
+});
+</script>

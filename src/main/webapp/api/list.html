@@ -13,5 +13,35 @@
 	</option>
 	</#list>
 </select>
+模块：
+<select name="module_id" id="module_id">
+</select>
+<script type="text/javascript">
+$(document).ready(function(){
+	var initSel = function(callback){
+		SelectTool.initSelectData({
+			elId:"module_id",
+			url:"/module/listByProjectId",
+			postData:{"project_id":$("#project_id").val()},
+			valueName:"id",
+			textName:"module_name",
+			defaultValue:"${(module_id)!}",
+			haveAll:true,
+			callback:callback
+		});
+	}
+	$("#project_id").change(function(){
+		initSel(function(){
+			initSearch(1);
+		});
+	});
+	$("#module_id").change(function(){
+		initSearch(1);
+	});
+	initSel(function(){
+		initSearch(1);
+	});
+});
+</script>
 </@search_form>
 </@layout>

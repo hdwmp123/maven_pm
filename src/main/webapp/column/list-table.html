@@ -1,7 +1,6 @@
 <table class="list">
 	<tbody>
 		<tr>
-			<th width="4%">主键</th>
 			<th width="10%">列名</th>
 			<th width="10%">据类型</th>
 			<th width="5%">为空</th>
@@ -11,7 +10,6 @@
 		</tr>
 		<#list columnPage.getList() as x>
 		<tr>
-			<td style="text-align:left;">${x.id}</td>
 			<td style="text-align:left;">${x.column_name}</td>
 			<td style="text-align:left;">${(x.column_type)!}</td>
 			<td style="text-align:left;">${(x.is_nullable)!}</td>

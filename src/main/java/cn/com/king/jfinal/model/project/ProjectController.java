@@ -1,6 +1,5 @@
 package cn.com.king.jfinal.model.project;
 
-
 import cn.com.king.jfinal.util.Constant;
 
 import com.jfinal.aop.Before;
@@ -13,11 +12,14 @@ public class ProjectController extends Controller {
 	public void index() {
 		render("list.html");
 	}
-	public void page(){
+
+	public void page() {
 		setAttr("projectPage", Project.dao.paginate(
-				getParaToInt("page_index", 1), Constant.PAGE_SIZE));
+				getParaToInt("page_index", 1), Constant.PAGE_SIZE,
+				getPara("project_name", "")));
 		render("list-table.html");
 	}
+
 	public void add() {
 		render("add.html");
 	}

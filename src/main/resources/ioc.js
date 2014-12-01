@@ -6,7 +6,7 @@ var ioc = {
     dataSource : {
         type : "org.nutz.dao.impl.SimpleDataSource",
         fields : {
-            jdbcUrl : 'jdbc:mysql://localhost:3306/pm?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF8&amp;characterSetResults=UTF8',
+            jdbcUrl : 'jdbc:mysql://localhost:3306/forwork?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF8&amp;characterSetResults=UTF8',
             username : 'root',
             password : 'root'
         }

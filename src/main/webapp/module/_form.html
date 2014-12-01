@@ -1,5 +1,5 @@
 <fieldset class="solid">
-	<legend>创建表</legend>
+	<legend>创建模块</legend>
 	<input type="hidden" name="module.id" value="${(module.id)!}" />
 	<div>
 		<label>隶属项目</label>
@@ -13,12 +13,24 @@
 		${project_idMsg!}
 	</div>
 	<div>
-		<label>表名称</label>
-		<input type="text" name="module.table_name" value="${(module.table_name)!}" />${table_nameMsg!}
+		<label>上级模块</label>
+		<select name="module.parent_id">
+			<option value="">无</option>
+			<#list parentModuleList as x>
+			<option value="${x.id}" <#if (module.parent_id)?? && module.parent_id=x.id>selected="selected"</#if> >
+			${x.module_name}
+			</option>
+			</#list>
+		</select>
+		${parent_idMsg!}
+	</div>
+	<div>
+		<label>模块名称</label>
+		<input type="text" name="module.module_name" value="${(module.module_name)!}" />${module_nameMsg!}
 	</div>
 	<div>
 		<label>排序</label>
-		<input type="text" name="module.table_index" value="${(module.table_index)!}" />${table_indexMsg!}
+		<input type="text" name="module.module_index" value="${(module.module_index)!}" />${module_indexMsg!}
 	</div>
 	<div>
 		<label>&nbsp;</label>

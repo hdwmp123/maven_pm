@@ -16,6 +16,9 @@ public class Module {
 
 	@Comment("隶属项目")
 	public int project_id;
+	
+	@Comment("父级项目")
+	public int parent_id;
 
 	@Comment("模块名称")
 	@ColDefine(width = 200)

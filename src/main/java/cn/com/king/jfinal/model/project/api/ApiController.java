@@ -14,7 +14,12 @@ public class ApiController extends Controller {
 	}
 
 	public void page() {
-		setAttr("apiPage", Api.dao.paginate(getParaToInt("page_index", 1), Constant.PAGE_SIZE));
+		setAttr("apiPage", Api.dao.paginate(
+				getParaToInt("page_index", 1), 
+				Constant.PAGE_SIZE,
+				getPara("api_name", null),
+				getParaToLong("project_id", null),
+				getParaToLong("module_id", null)));
 		render("list-table.html");
 	}
 
