@@ -9,9 +9,9 @@ public class CodeManagerValidator extends Validator {
 	}
 
 	protected void validate(Controller controller) {
-		validateRequiredString("codeManager.namespace",
-				"codeManager_namespaceMsg", "!");
-		validateRequiredString("codeManager.name", "codeManager_nameMsg", "!");
+		validateRequiredString("codeManager.namespace","codeManager_namespaceMsg", "请选择命名空间!");
+		validateRequiredString("codeManager.name", "codeManager_nameMsg", "请输入名称!");
+		validateRequiredString("codeManager.father_id", "codeManager_father_idMsg", "请选择上级!");
 	}
 
 	protected void handleError(Controller controller) {

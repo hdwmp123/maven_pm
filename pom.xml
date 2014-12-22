@@ -56,6 +56,11 @@
 			<artifactId>nutz</artifactId>
 			<version>1.b.50</version>
 		</dependency>
+		<dependency>
+			<groupId>freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>2.3.8</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>maven_pm</finalName>

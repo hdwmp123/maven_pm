@@ -8,7 +8,7 @@
 命名空间：
 <select name="namespace">
 	<#list namespaceList as x>
-	<option value="${x.code}" >
+	<option value="${(x.code)!}" >
 	${x.name}
 	</option>
 	</#list>
@@ -16,7 +16,7 @@
 父级：
 <select name="father_id">
 	<#list fatherIdList as x>
-	<option value="${x.code}" >
+	<option value="${(x.code)!}" >
 	${x.name}
 	</option>
 	</#list>

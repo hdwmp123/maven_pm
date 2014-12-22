@@ -28,18 +28,22 @@ public class Api {
 	@Comment("API地址")
 	@ColDefine(width = 200)
 	public String api_url;
-
-	@Comment("API请求方式")
+	
+	@Comment("API请求类型")
+	@ColDefine(width = 200)
+	public String api_request_type;
+	
+	@Comment("API请求参数")
 	@ColDefine(type=ColType.TEXT)
 	public String api_request_param;
 
-	@Comment("API请求参数")
+	@Comment("API响应类型")
+	@ColDefine(width = 200)
+	public String api_response_type;
+	
+	@Comment("API响应参数")
 	@ColDefine(type=ColType.TEXT)
 	public String api_response_param;
-
-	@Comment("API响应参数")
-	@ColDefine(width = 200)
-	public String api_type;
 
 	@Comment("说明")
 	@ColDefine(width = 200)

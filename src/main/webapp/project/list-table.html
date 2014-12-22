@@ -2,15 +2,19 @@
 	<tbody>
 		<tr>
 			<th width="10%">项目名称</th>
+			<th width="10%">模块</th>
 			<th width="10%">表</th>
 			<th width="10%">API</th>
+			<th width="10%">导出API</th>
 			<th width="10%">操作</th>
 		</tr>
 		<#list projectPage.getList() as x>
 		<tr>
 			<td style="text-align:left;">${x.project_name}</td>
+			<td style="text-align:left;"><a href="/module?project_id=${x.id}">查看模块</a></td>
 			<td style="text-align:left;"><a href="/table?project_id=${x.id}">查看表</a></td>
 			<td style="text-align:left;"><a href="/api?project_id=${x.id}">查看API</a></td>
+			<td style="text-align:left;"><a href="/project/export?project_id=${x.id}">导出API</a></td>
 			<td style="text-align:left;">
 				&nbsp;&nbsp;<a href="/project/delete/${x.id}">删除</a>
 				&nbsp;&nbsp;<a href="/project/edit/${x.id}">修改</a>

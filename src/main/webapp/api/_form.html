@@ -40,19 +40,30 @@
 	</div>
 	<div>
 		<label>请求方式</label>
-		<select name="api.api_type">
-			<#list apiTypeList as x>
-			<option value="${x.code}" <#if (api.api_type)?? && api.api_type=x.code>selected="selected"</#if> >
+		<select name="api.api_request_type">
+			<#list apiRequestTypeList as x>
+			<option value="${(x.code)!}" <#if (api.api_request_type)?? && (x.code)?? && api.api_request_type=x.code>selected="selected"</#if> >
 			${x.name}
 			</option>
 			</#list>
 		</select>
-		${api_typeMsg!}
+		${api_request_typeMsg!}
 	</div>
 	<div>
 		<label>请求参数</label>
 		<textarea name="api.api_request_param">${(api.api_request_param)!}</textarea>
 		${api_request_paramMsg!}
+	</div>
+	<div>
+		<label>响应方式</label>
+		<select name="api.api_response_type">
+			<#list apiResponseTypeList as x>
+			<option value="${(x.code)!}" <#if (api.api_response_type)?? && (x.code)?? && api.api_response_type=x.code>selected="selected"</#if> >
+			${x.name}
+			</option>
+			</#list>
+		</select>
+		${api_request_typeMsg!}
 	</div>
 	<div>
 		<label>响应参数</label>

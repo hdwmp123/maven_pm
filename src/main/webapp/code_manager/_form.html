@@ -5,7 +5,9 @@
 		<label>命名空间</label>
 		<select name="codeManager.namespace">
 			<#list namespaceList as x>
-			<option value="${x.code}">${x.name}</option>
+			<option value="${(x.code)!}" <#if (codeManager.namespace)?? && (x.code)?? && codeManager.namespace=x.code>selected="selected"</#if> >
+			${x.name}
+			</option>
 			</#list>
 		</select>
 		${codeManager_namespaceMsg!}
@@ -22,10 +24,12 @@
 		<label>上级</label>
 		<select name="codeManager.father_id">
 			<#list fatherIdList as x>
-			<option value="${x.code}">${x.name}</option>
+			<option value="${(x.code)!}" <#if (codeManager.father_id)?? && (x.code)?? && codeManager.father_id+""=x.code>selected="selected"</#if> >
+			${x.name}
+			</option>
 			</#list>
 		</select>
-		${codeManager_namespaceMsg!}
+		${codeManager_father_idMsg!}
 	</div>
 	<div>
 		<label>&nbsp;</label>

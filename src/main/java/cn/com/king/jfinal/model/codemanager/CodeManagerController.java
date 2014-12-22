@@ -15,8 +15,11 @@ public class CodeManagerController extends Controller {
 	}
 
 	public void page() {
-		setAttr("codeManagerPage",
-				CodeManager.dao.paginate(getParaToInt("page_index", 1), Constant.PAGE_SIZE));
+		setAttr("codeManagerPage",CodeManager.dao.paginate(
+				getParaToInt("page_index", 1), 
+				Constant.PAGE_SIZE,
+				getPara("namespace", null),
+				getParaToLong("father_id", null)));
 		render("list-table.html");
 	}
 

@@ -4,7 +4,6 @@ import com.jfinal.core.Controller;
 import com.jfinal.validate.Validator;
 
 public class ProjectValidator extends Validator {
-
 	public ProjectValidator() {
 	}
 

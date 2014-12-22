@@ -3,7 +3,7 @@
 	<input type="hidden" name="module.id" value="${(module.id)!}" />
 	<div>
 		<label>隶属项目</label>
-		<select name="module.project_id">
+		<select name="module.project_id" id="project_id">
 			<#list projectList as x>
 			<option value="${x.id}" <#if (module.project_id)?? && module.project_id=x.id>selected="selected"</#if> >
 			${x.project_name}
@@ -14,7 +14,7 @@
 	</div>
 	<div>
 		<label>上级模块</label>
-		<select name="module.parent_id">
+		<select name="module.parent_id" id="parent_id">
 			<option value="">无</option>
 			<#list parentModuleList as x>
 			<option value="${x.id}" <#if (module.parent_id)?? && module.parent_id=x.id>selected="selected"</#if> >
@@ -37,3 +37,27 @@
 		<input value="提交" type="submit">
 	</div>
 </fieldset>
+<script type="text/javascript">
+$(document).ready(function(){
+	var initSel = function(callback){
+		SelectTool.initSelectData({
+			elId:"parent_id",
+			url:"/module/listByProjectId",
+			postData:{"project_id":$("#project_id").val()},
+			valueName:"id",
+			textName:"module_name",
+			defaultValue:"${(parent_id)!}",
+			haveAll:true,
+			callback:callback
+		});
+	}
+	$("#project_id").change(function(){
+		initSel(function(){
+			initSearch(1);
+		});
+	});
+	initSel(function(){
+		initSearch(1);
+	});
+});
+</script>

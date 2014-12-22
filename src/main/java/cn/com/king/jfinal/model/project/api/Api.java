@@ -18,8 +18,12 @@ public class Api extends Model<Api> {
 	public Api() {
 	}
 
-	public Page<Api> paginate(int pageNumber, int pageSize, String apiName,
-			Long projectId, Long moduleId) {
+	public Page<Api> paginate(
+			int pageNumber, 
+			int pageSize, 
+			String apiName,
+			Long projectId, 
+			Long moduleId) {
 		StringBuffer where = new StringBuffer();
 		List<Object> params = new ArrayList<Object>();
 		if (BeanUtil.checkStr(apiName)) {
@@ -37,7 +41,7 @@ public class Api extends Model<Api> {
 
 		return paginate(pageNumber, pageSize, "select a.*",
 				"from project_api a where 1=1 " + where.toString()
-						+ "order by a.api_index asc", params.toArray());
+				+ "order by a.api_index asc", params.toArray());
 	}
 
 	public List<Api> listAll() {
@@ -50,7 +54,11 @@ public class Api extends Model<Api> {
 		}
 		return findById(id);
 	}
-
+	
+	public List<Api> listByProjectId(Long projectId){
+		return find("select * from project_api a where a.project_id = " + projectId);
+	}
+	
 	public Project getProject() {
 		return Project.dao.getById(getInt("project_id"));
 	}
