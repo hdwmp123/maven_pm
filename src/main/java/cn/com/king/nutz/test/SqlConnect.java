@@ -258,7 +258,7 @@ public class SqlConnect {
 		password = "";
 		props = new Properties();
 		in = null;
-		in = SqlConnect.class.getResourceAsStream("/database.properties");
+		in = SqlConnect.class.getResourceAsStream("/config.properties");
 		try {
 			props.load(in);
 		} catch (IOException e1) {
