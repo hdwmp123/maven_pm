@@ -31,12 +31,18 @@ var SelectTool={
                 return;
             }
             if(!postData){postData = {};}
+            var keys = Object.keys(postData);
+            var key = null;
+            for(var i = 0;i < keys.length; i++ ){
+            	key = keys[i];
+                if(!postData[key] || postData[key] === null){
+                    postData[key] = "";
+                }
+            }
             if(!async){async = true;}
             if(!valueName){valueName = "id";}
             if(!textName){textName = "name";}
-            console.log(param);
-            console.log(defaultValue === null);
-            if(!defaultValue || defaultValue ===null){defaultValue = "";}
+            if(!defaultValue || defaultValue === null){defaultValue = "";}
             
             //
             var dataToSelect=[];
