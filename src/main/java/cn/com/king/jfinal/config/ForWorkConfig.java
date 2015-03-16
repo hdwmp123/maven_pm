@@ -13,6 +13,7 @@ import cn.com.king.jfinal.model.project.table.Table;
 import cn.com.king.jfinal.model.project.table.TableController;
 import cn.com.king.jfinal.model.project.table.column.Column;
 import cn.com.king.jfinal.model.project.table.column.ColumnController;
+import cn.com.king.jfinal.model.test.TestController;
 
 import com.jfinal.config.Constants;
 import com.jfinal.config.Handlers;
@@ -36,6 +37,7 @@ public class ForWorkConfig extends JFinalConfig {
 
     public void configRoute(Routes me) {
         me.add("/", CommonController.class);
+        me.add("/test", TestController.class);
         me.add("/project", ProjectController.class);
         me.add("/module", ModuleController.class);
         me.add("/table", TableController.class);
