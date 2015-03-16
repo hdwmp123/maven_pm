@@ -8,7 +8,7 @@ public class ProjectValidator extends Validator {
 	}
 
 	protected void validate(Controller controller) {
-		validateRequiredString("project.project_name", "project_nameMsg", "");
+		validateRequiredString("project.project_name", "project_nameMsg", "请输入项目名称!");
 	}
 
 	protected void handleError(Controller controller) {

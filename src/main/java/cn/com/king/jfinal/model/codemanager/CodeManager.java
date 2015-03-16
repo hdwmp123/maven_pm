@@ -38,7 +38,7 @@ public class CodeManager extends Model<CodeManager> {
 	}
 
 	public List<CodeManager> listByNamespace(String namespace) {
-		return find("select * from code_manager a where a.namespace = 'All' or a.namespace=? order by a.id asc",namespace);
+		return find("select * from code_manager a where a.namespace=? order by a.id asc",namespace);
 	}
 
 }

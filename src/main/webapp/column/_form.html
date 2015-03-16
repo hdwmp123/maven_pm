@@ -3,12 +3,7 @@
 	<input type="hidden" name="column.id" value="${(column.id)!}" />
 	<div>
 		<label>隶属项目</label>
-		<select name="project_id" id="project_id">
-			<#list projectList as x>
-			<option value="${x.id}" <#if (column.getTable().getProject())?? && column.getTable().getProject().id=x.id>selected="selected"</#if> >
-			${x.project_name}
-			</option>
-			</#list>
+		<select name="column.project_id" id="project_id">
 		</select>
 		${project_idMsg!}
 	</div>
@@ -16,15 +11,32 @@
 		<label>隶属表</label>
 		<select name="column.table_id" id="table_id">
 		</select>
-		${project_idMsg!}
+		${table_idMsg!}
 	</div>
 	<div>
 		<label>列名</label>
-		<input type="text" name="column.column_name" value="${(column.column_name)!}" />${column_nameMsg!}
+		<input type="text" name="column.column_name" value="${(column.column_name)!}" />
+		${column_nameMsg!}
+	</div>
+	<div>
+		<label>列数据类型</label>
+		<input type="text" name="column.column_type" value="${(column.column_type)!}" />
+		${column_typeMsg!}
+	</div>
+	<div>
+		<label>是否可以为空</label>
+		<input type="text" name="column.is_nullable" value="${(column.is_nullable)!}" />
+		${is_nullableMsg!}
+	</div>
+	<div>
+		<label>注释</label>
+		<input type="text" name="column.column_comment" value="${(column.column_comment)!}" />
+		${column_commentMsg!}
 	</div>
 	<div>
 		<label>排序</label>
-		<input type="text" name="column.column_index" value="${(column.column_index)!}" />${column_indexMsg!}
+		<input type="text" name="column.column_index" value="${(column.column_index)!}" />
+		${column_indexMsg!}
 	</div>
 	<div>
 		<label>&nbsp;</label>
@@ -33,7 +45,17 @@
 </fieldset>
 <script type="text/javascript">
 $(document).ready(function(){
-	var initSel = function(callback){
+	var initSel_project_id = function(callback){
+		SelectTool.initSelectData({
+			elId:"project_id",
+			url:"/project/listAll",
+			valueName:"id",
+			textName:"project_name",
+			defaultValue:"${(column.project_id)!}",
+			callback:callback
+		});
+	}
+	var initSel_table_id = function(callback){
 		SelectTool.initSelectData({
 			elId:"table_id",
 			url:"/table/listByProjectId",
@@ -45,9 +67,10 @@ $(document).ready(function(){
 		});
 	}
 	$("#project_id").change(function(){
-		initSel(function(){});
+		initSel_table_id(function(){});
 	});
-	
-	initSel(function(){});
+	initSel_project_id(function(){
+		initSel_table_id(function(){});
+	});
 });
 </script>

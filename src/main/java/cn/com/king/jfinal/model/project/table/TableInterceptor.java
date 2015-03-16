@@ -2,7 +2,6 @@ package cn.com.king.jfinal.model.project.table;
 
 import org.apache.log4j.Logger;
 
-import cn.com.king.jfinal.model.project.Project;
 import cn.com.king.jfinal.util.BeanUtil;
 
 import com.jfinal.aop.Interceptor;
@@ -18,14 +17,8 @@ public class TableInterceptor implements Interceptor {
 	public void intercept(ActionInvocation ai) {
 		LOGGER.info("Table Befor invoking ");
 		ai.invoke();
-		initSel(ai.getController());
 		initParam(ai.getController());
 		LOGGER.info("Table After invoking ");
-	}
-
-	private void initSel(Controller controller) {
-		controller.setAttr("projectList", Project.dao.listAll());
-
 	}
 
 	private void initParam(Controller controller) {

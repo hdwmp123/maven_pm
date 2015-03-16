@@ -37,11 +37,11 @@ public class Module extends Model<Module> {
 		}
 		return paginate(pageNumber, pageSize, "select a.*",
 				"from project_module a where 1=1 " + where.toString()
-						+ " order by a.id asc", params.toArray());
+						+ " order by a.module_index asc", params.toArray());
 	}
 
 	public List<Module> listAll() {
-		return find("select * from project_module order by id asc");
+		return find("select * from project_module order by module_index asc");
 	}
 
 	public Module getById(Integer id) {

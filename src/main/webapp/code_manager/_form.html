@@ -3,12 +3,7 @@
 	<input type="hidden" name="codeManager.id" value="${(codeManager.id)!}" />
 	<div>
 		<label>命名空间</label>
-		<select name="codeManager.namespace">
-			<#list namespaceList as x>
-			<option value="${(x.code)!}" <#if (codeManager.namespace)?? && (x.code)?? && codeManager.namespace=x.code>selected="selected"</#if> >
-			${x.name}
-			</option>
-			</#list>
+		<select name="codeManager.namespace" id="namespace">
 		</select>
 		${codeManager_namespaceMsg!}
 	</div>
@@ -22,12 +17,7 @@
 	</div>
 	<div>
 		<label>上级</label>
-		<select name="codeManager.father_id">
-			<#list fatherIdList as x>
-			<option value="${(x.code)!}" <#if (codeManager.father_id)?? && (x.code)?? && codeManager.father_id+""=x.code>selected="selected"</#if> >
-			${x.name}
-			</option>
-			</#list>
+		<select name="codeManager.father_id" id="father_id">
 		</select>
 		${codeManager_father_idMsg!}
 	</div>
@@ -36,3 +26,34 @@
 		<input value="提交" type="submit">
 	</div>
 </fieldset>
+<script type="text/javascript">
+$(document).ready(function(){
+	var initSel_namespace = function(callback){
+		SelectTool.initSelectData({
+			elId:"namespace",
+			url:"/code_manager/listByNamespace",
+			postData:{"namespace":"Namespace"},
+			valueName:"code",
+			textName:"name",
+			defaultValue:"${(codeManager.namespace)!}",
+			haveAll:false,
+			callback:callback
+		});
+	}
+	var initSel_father_id = function(callback){
+		SelectTool.initSelectData({
+			elId:"father_id",
+			url:"/code_manager/listByNamespace",
+			postData:{"namespace":"None"},
+			valueName:"id",
+			textName:"name",
+			defaultValue:"${(codeManager.father_id)!}",
+			haveAll:true,
+			callback:callback
+		});
+	}
+	//初始化
+	initSel_namespace(function(){});
+	initSel_father_id(function(){});
+});
+</script>

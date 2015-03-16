@@ -3,25 +3,37 @@
 	<input type="hidden" name="table.id" value="${(table.id)!}" />
 	<div>
 		<label>隶属项目</label>
-		<select name="table.project_id">
-			<#list projectList as x>
-			<option value="${x.id}" <#if (table.project_id)?? && table.project_id=x.id>selected="selected"</#if> >
-			${x.project_name}
-			</option>
-			</#list>
+		<select name="table.project_id" id="project_id">
 		</select>
 		${project_idMsg!}
 	</div>
 	<div>
 		<label>表名称</label>
-		<input type="text" name="table.table_name" value="${(table.table_name)!}" />${table_nameMsg!}
+		<input type="text" name="table.table_name" value="${(table.table_name)!}" />
+		${table_nameMsg!}
 	</div>
 	<div>
 		<label>排序</label>
-		<input type="text" name="table.table_index" value="${(table.table_index)!}" />${table_indexMsg!}
+		<input type="text" name="table.table_index" value="${(table.table_index)!}" />
+		${table_indexMsg!}
 	</div>
 	<div>
 		<label>&nbsp;</label>
 		<input value="提交" type="submit">
 	</div>
 </fieldset>
+<script type="text/javascript">
+$(document).ready(function(){
+	var initSel_project_id = function(callback){
+		SelectTool.initSelectData({
+			elId:"project_id",
+			url:"/project/listAll",
+			valueName:"id",
+			textName:"project_name",
+			defaultValue:"${(table.project_id)!}",
+			callback:callback
+		});
+	}
+	initSel_project_id(function(){});
+});
+</script>

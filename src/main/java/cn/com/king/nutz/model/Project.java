@@ -17,6 +17,9 @@ public class Project {
 	@Comment("项目名称")
 	@ColDefine(width = 200)
 	public String project_name;
+	
+	@Comment("排序")
+	public int project_index;
 
 	@Comment("创建时间")
 	public Date created;

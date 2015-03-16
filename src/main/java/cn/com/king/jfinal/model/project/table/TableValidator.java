@@ -9,9 +9,9 @@ public class TableValidator extends Validator {
 	}
 
 	protected void validate(Controller controller) {
-		validateRequiredString("table.project_id", "project_idMsg", "!");
-		validateRequiredString("table.table_name", "table_nameMsg", "!");
-		validateRequiredString("table.table_index", "table_indexMsg", "!");
+		validateRequiredString("table.project_id", "project_idMsg", "请选择隶属项目!");
+		validateRequiredString("table.table_name", "table_nameMsg", "请输入表名!");
+		validateRequiredString("table.table_index", "table_indexMsg", "请输入排序!");
 	}
 
 	protected void handleError(Controller controller) {

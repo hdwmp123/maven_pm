@@ -14,6 +14,9 @@ public class Column {
 	@Comment("主键")
 	public int id;
 	
+	@Comment("隶属项目")
+	public int project_id;
+	
 	@Comment("隶属表")
 	public int table_id;
 	

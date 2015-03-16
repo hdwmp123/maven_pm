@@ -3,7 +3,13 @@
 	<input type="hidden" name="project.id" value="${(project.id)!}" />
 	<div>
 		<label>项目名称</label>
-		<input type="text" name="project.project_name" value="${(project.project_name)!}" />${project_nameMsg!}
+		<input type="text" name="project.project_name" value="${(project.project_name)!}" />
+		${project_nameMsg!}
+	</div>
+	<div>
+		<label>排序</label>
+		<input type="text" name="project.project_index" value="${(project.project_index)!}" />
+		${project_indexMsg!}
 	</div>
 	<div>
 		<label>&nbsp;</label>

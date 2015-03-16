@@ -17,12 +17,12 @@ public class CreateTable {
 
 	public static void main(String args[]) {
 		Dao dao = DaoUtil.getDao();
-//		dao.create(Api.class, true);
-//		dao.create(CodeManager.class, true);
-//		dao.create(Column.class, true);
+		dao.create(CodeManager.class, true);
+		dao.create(Project.class, true);
 		dao.create(Module.class, true);
-//		dao.create(Project.class, true);
-//		dao.create(Table.class, true);
+		dao.create(Table.class, true);
+		dao.create(Column.class, true);
+		dao.create(Api.class, true);
 		System.out.println("OK");
 	}
 }

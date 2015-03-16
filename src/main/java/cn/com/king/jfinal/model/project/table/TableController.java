@@ -15,8 +15,12 @@ public class TableController extends Controller {
 	}
 
 	public void page() {
-		setAttr("tablePage", Table.dao.paginate(getParaToInt("page_index", -1),
-				Constant.PAGE_SIZE, getParaToInt("project_id", -1)));
+		setAttr("tablePage", Table.dao.paginate(
+				getParaToInt("page_index", -1),
+				Constant.PAGE_SIZE, 
+				getPara("table_name"),
+				getParaToInt("project_id")
+				));
 		render("list-table.html");
 	}
 

@@ -52,8 +52,7 @@ public class ModuleController extends Controller {
 	}
 
 	public void listByProjectId() {
-		List<Module> list = Module.dao.listByProjectId(getParaToInt(
-				"project_id", -1));
+		List<Module> list = Module.dao.listByProjectId(getParaToInt("project_id", -1));
 		renderJson(list);
 	}
 }

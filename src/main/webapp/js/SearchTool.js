@@ -21,6 +21,6 @@ var SearchTool = {
            //resetForm: true,           //成功提交后，重置所有表单元素的值  
            timeout: 3000                //限制请求的时间，当请求大于3秒后，跳出请求  
         };
-        $("#"+formId).ajaxSubmit(options);
+        $("#" + formId).ajaxSubmit(options);
     }
 };

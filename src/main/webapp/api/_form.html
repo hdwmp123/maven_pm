@@ -9,11 +9,6 @@
 	<div>
 		<label>隶属项目</label>
 		<select name="api.project_id" id="project_id">
-			<#list projectList as x>
-			<option value="${x.id}" <#if (api.project_id)?? && api.project_id=x.id>selected="selected"</#if> >
-			${x.project_name}
-			</option>
-			</#list>
 		</select>
 		${project_idMsg!}
 	</div>
@@ -40,12 +35,7 @@
 	</div>
 	<div>
 		<label>请求方式</label>
-		<select name="api.api_request_type">
-			<#list apiRequestTypeList as x>
-			<option value="${(x.code)!}" <#if (api.api_request_type)?? && (x.code)?? && api.api_request_type=x.code>selected="selected"</#if> >
-			${x.name}
-			</option>
-			</#list>
+		<select name="api.api_request_type" id="api_request_type">
 		</select>
 		${api_request_typeMsg!}
 	</div>
@@ -56,14 +46,9 @@
 	</div>
 	<div>
 		<label>响应方式</label>
-		<select name="api.api_response_type">
-			<#list apiResponseTypeList as x>
-			<option value="${(x.code)!}" <#if (api.api_response_type)?? && (x.code)?? && api.api_response_type=x.code>selected="selected"</#if> >
-			${x.name}
-			</option>
-			</#list>
+		<select name="api.api_response_type" id="api_response_type">
 		</select>
-		${api_request_typeMsg!}
+		${api_response_typeMsg!}
 	</div>
 	<div>
 		<label>响应参数</label>
@@ -82,7 +67,18 @@
 </fieldset>
 <script type="text/javascript">
 $(document).ready(function(){
-	var initSel = function(callback){
+	var initSel_project_id = function(callback){
+		SelectTool.initSelectData({
+			elId:"project_id",
+			url:"/project/listAll",
+			postData:{},
+			valueName:"id",
+			textName:"project_name",
+			defaultValue:"${(api.project_id)!}",
+			callback:callback
+		});
+	}
+	var initSel_module_id = function(callback){
 		SelectTool.initSelectData({
 			elId:"module_id",
 			url:"/module/listByProjectId",
@@ -93,12 +89,39 @@ $(document).ready(function(){
 			callback:callback
 		});
 	}
+	var initSel_api_request_type = function(callback){
+		SelectTool.initSelectData({
+			elId:"api_request_type",
+			url:"/code_manager/listByNamespace",
+			postData:{"namespace":"RequestType"},
+			valueName:"code",
+			textName:"name",
+			defaultValue:"${(api.api_request_type)!}",
+			callback:callback
+		});
+	}
+	var initSel_api_response_type = function(callback){
+		SelectTool.initSelectData({
+			elId:"api_response_type",
+			url:"/code_manager/listByNamespace",
+			postData:{"namespace":"ResponseType"},
+			valueName:"code",
+			textName:"name",
+			defaultValue:"${(api.api_response_type)!}",
+			callback:callback
+		});
+	}
 	$("#project_id").change(function(){
-		initSel(function(){});
+		initSel_module_id(function(){});
 	});
 	$("#module_id").change(function(){
 		$("#api_name").val($("#module_id option:selected").text());
 	});
-	initSel(function(){});
+	//初始化
+	initSel_project_id(function(){
+		initSel_module_id(function(){});
+	});
+	initSel_api_request_type(function(){});
+	initSel_api_response_type(function(){});
 });
 </script>

@@ -16,17 +16,21 @@ public class ColumnController extends Controller {
 	}
 
 	public void page() {
-		setAttr("columnPage",
-				Column.dao.paginate(getParaToInt("page_index", 1),  Constant.PAGE_SIZE,
-						getParaToInt("table_id", -1)));
+		setAttr("columnPage", Column.dao.paginate(
+				getParaToInt("page_index", 1),
+				Constant.PAGE_SIZE,
+				getPara("column_name"),
+				getParaToInt("project_id"),
+				getParaToInt("table_id")
+				));
 		render("list-table.html");
 	}
 
-	@Before(ColumnValidator.class)
 	public void add() {
 		render("add.html");
 	}
 
+	@Before(ColumnValidator.class)
 	public void save() {
 		getModel(Column.class).save();
 		index();

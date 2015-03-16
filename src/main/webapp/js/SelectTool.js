@@ -34,7 +34,10 @@ var SelectTool={
             if(!async){async = true;}
             if(!valueName){valueName = "id";}
             if(!textName){textName = "name";}
-            if(!defaultValue){defaultValue = "";}
+            console.log(param);
+            console.log(defaultValue === null);
+            if(!defaultValue || defaultValue ===null){defaultValue = "";}
+            
             //
             var dataToSelect=[];
             var success = function(data) {

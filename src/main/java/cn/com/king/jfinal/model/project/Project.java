@@ -29,11 +29,11 @@ public class Project extends Model<Project> {
 		}
 		return paginate(pageNumber, pageSize, "select a.*",
 				"from project a where 1=1 " + where.toString()
-						+ " order by a.id asc", params.toArray());
+						+ " order by a.project_index asc", params.toArray());
 	}
 
 	public List<Project> listAll() {
-		return find("select * from project order by id asc");
+		return find("select * from project order by project_index asc");
 	}
 
 	public Project getById(Integer id) {

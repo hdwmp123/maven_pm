@@ -6,12 +6,26 @@
 </h1>
 <@search_form actionUrl="/table/page">
 隶属项目：
-<select name="project_id">
-    <#list projectList as x>
-    <option value="${x.id}" <#if (project_id)?? && project_id=x.id>selected="selected"</#if> >
-    ${x.project_name}
-    </option>
-    </#list>
+<select name="project_id" id="project_id">
 </select>
+表名：
+<input type="text" name="table_name"/>
+<script type="text/javascript">
+var initSel_project_id = function(callback){
+	SelectTool.initSelectData({
+		elId:"project_id",
+		url:"/project/listAll",
+		postData:{},
+		valueName:"id",
+		textName:"project_name",
+		defaultValue:"${(project_id)!}",
+		haveAll:true,
+		callback:callback
+	});
+}
+initSel_project_id(function(){
+	initSearch(1);
+});
+</script>
 </@search_form>
 </@layout>

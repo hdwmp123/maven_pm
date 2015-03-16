@@ -7,19 +7,25 @@
 <@search_form actionUrl="/column/page" initSearch=false>
 隶属项目：
 <select name="project_id" id="project_id">
-	<#list projectList as x>
-	<option value="${x.id}" <#if (project_id)?? && project_id=x.id>selected="selected"</#if> >
-	${x.project_name}
-	</option>
-	</#list>
 </select>
 表：
-<select name="table_id" id="table_id"></select>
-</@search_form>
-</@layout>
+<select name="table_id" id="table_id">
+</select>
 <script type="text/javascript">
 	$(document).ready(function(){
-		var initSel = function(callback){
+		var initSel_project_id = function(callback){
+			SelectTool.initSelectData({
+				elId:"project_id",
+				url:"/project/listAll",
+				postData:{"project_id":$("#project_id").val()},
+				valueName:"id",
+				textName:"project_name",
+				defaultValue:"${(project_id)!}",
+				haveAll:true,
+				callback:callback
+			});
+		}
+		var initSel_table_id = function(callback){
 			SelectTool.initSelectData({
 				elId:"table_id",
 				url:"/table/listByProjectId",
@@ -27,15 +33,24 @@
 				valueName:"id",
 				textName:"table_name",
 				defaultValue:"${(table_id)!}",
+				haveAll:true,
 				callback:callback
 			});
 		}
 		$("#project_id").change(function(){
-			initSel(function(){});
+			initSel_table_id(function(){
+				initSearch(1);
+			});
 		});
-		
-		initSel(function(){
+		$("#table_id").change(function(){
 			initSearch(1);
+		});
+		initSel_project_id(function(){
+			initSel_table_id(function(){
+				initSearch(1);
+			});
 		});
 	});
 </script>
+</@search_form>
+</@layout>
