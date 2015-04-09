@@ -45,7 +45,8 @@ public class TableController extends Controller {
 		getModel(Table.class).update();
 		index();
 	}
-
+	
+	@Before(TableValidator.class)
 	public void delete() {
 		Table.dao.deleteById(getParaToInt());
 		index();

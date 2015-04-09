@@ -15,10 +15,10 @@ public class ColumnInterceptor implements Interceptor {
 	}
 
 	public void intercept(ActionInvocation ai) {
-		LOGGER.info("Table Befor invoking ");
+		LOGGER.info("Column Befor invoking ");
 		ai.invoke();
 		initParam(ai.getController());
-		LOGGER.info("Table After invoking ");
+		LOGGER.info("Column After invoking ");
 	}
 
 	private void initParam(Controller controller) {

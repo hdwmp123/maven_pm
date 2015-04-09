@@ -17,7 +17,16 @@ public class Api extends Model<Api> {
 
 	public Api() {
 	}
-
+	
+	/**
+	 * 分页
+	 * @param pageNumber
+	 * @param pageSize
+	 * @param apiName
+	 * @param projectId
+	 * @param moduleId
+	 * @return
+	 */
 	public Page<Api> paginate(
 			int pageNumber, 
 			int pageSize, 
@@ -43,11 +52,20 @@ public class Api extends Model<Api> {
 				"from project_api a where 1=1 " + where.toString()
 				+ "order by a.api_index asc", params.toArray());
 	}
-
+	
+	/**
+	 * 获取所有
+	 * @return
+	 */
 	public List<Api> listAll() {
 		return find("select * from project_api order by id asc");
 	}
-
+	
+	/**
+	 * 根据ID获取
+	 * @param id
+	 * @return
+	 */
 	public Api getById(Integer id) {
 		if (id == null) {
 			return null;
@@ -55,14 +73,46 @@ public class Api extends Model<Api> {
 		return findById(id);
 	}
 	
-	public List<Api> listByProjectId(Long projectId){
+	/**
+	 * 根据projectId获取集合
+	 * @param projectId
+	 * @return
+	 */
+	public List<Api> listByProjectId(int projectId) {
 		return find("select * from project_api a where a.project_id = " + projectId);
 	}
 	
+	/**
+	 * 根据moduleId获取集合
+	 * @param moduleId
+	 * @return
+	 */
+	public List<Api> listByModuleId(int moduleId) {
+		return find("select * from project_api a where a.module_id = " + moduleId);
+	}
+	
+	/**
+	 * 根据moduleId获取数量
+	 * @param moduleId
+	 * @return
+	 */
+	public int getCountByModuleId(int moduleId) {
+		List<Api> list = this.listByModuleId(moduleId);
+		return list == null ? 0 : list.size();
+	}
+	
+	/**
+	 * 属性
+	 * @return
+	 */
 	public Project getProject() {
 		return Project.dao.getById(getInt("project_id"));
 	}
 
+	/**
+	 * 属性
+	 * @return
+	 */
 	public Module getParent() {
 		return Module.dao.getById(getInt("module_id"));
 	}

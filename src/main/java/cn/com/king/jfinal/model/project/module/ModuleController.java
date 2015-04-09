@@ -45,7 +45,8 @@ public class ModuleController extends Controller {
 		getModel(Module.class).update();
 		index();
 	}
-
+	
+	@Before(ModuleValidator.class)
 	public void delete() {
 		Module.dao.deleteById(getParaToInt());
 		index();
@@ -55,4 +56,5 @@ public class ModuleController extends Controller {
 		List<Module> list = Module.dao.listByProjectId(getParaToInt("project_id", -1));
 		renderJson(list);
 	}
+	
 }

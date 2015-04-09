@@ -66,6 +66,7 @@ public class CodeManagerController extends Controller {
 	/**
 	 * 删除
 	 */
+	@Before(CodeManagerValidator.class)
 	public void delete() {
 		CodeManager.dao.deleteById(getParaToInt());
 		index();

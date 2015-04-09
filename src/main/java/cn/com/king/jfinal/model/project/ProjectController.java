@@ -68,6 +68,7 @@ public class ProjectController extends Controller {
 	/**
 	 * 删除
 	 */
+	@Before(ProjectValidator.class)
 	public void delete() {
 		Project.dao.deleteById(getParaToInt());
 		index();
@@ -86,7 +87,7 @@ public class ProjectController extends Controller {
 	 */
 	public void export() {
 		//
-		List<Api> apis = Api.dao.listByProjectId(getParaToLong("project_id", -1L));
+		List<Api> apis = Api.dao.listByProjectId(getParaToInt("project_id", -1));
 		//
 		String templateName = "export_api.ftl";
 		String targetHtmlPath = "D:/Project/myself_proX64/maven_pm/maven.1414661360171/trunk/src/main/resources/temp/export_api_test.doc";

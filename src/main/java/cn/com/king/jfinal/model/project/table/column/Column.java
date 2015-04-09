@@ -17,7 +17,16 @@ public class Column extends Model<Column> {
 
 	public Column() {
 	}
-
+	
+	/**
+	 * 分页
+	 * @param pageNumber
+	 * @param pageSize
+	 * @param columnName
+	 * @param projectId
+	 * @param tableId
+	 * @return
+	 */
 	public Page<Column> paginate(int pageNumber, int pageSize, String columnName, 
 			Integer projectId,Integer tableId) {
 		StringBuffer where = new StringBuffer();
@@ -38,12 +47,41 @@ public class Column extends Model<Column> {
 				"from table_column a where 1=1 " + where.toString() +" order by a.id asc",
 				params.toArray());
 	}
-	
+	/**
+	 * 属性
+	 * @return
+	 */
 	public Project getProject() {
 		return Project.dao.getById(getInt("project_id"));
 	}
+	
+	/**
+	 * 属性
+	 * @return
+	 */
 	public Table getTable() {
 		return Table.dao.getById(getInt("table_id"));
+	}
+	
+	/**
+	 * 根据tableId获取数量
+	 * @param tableId
+	 * @return
+	 */
+	public int getCountByTableId(Integer tableId) {
+		List<Column> list = this.listByTableId(tableId);
+		return list == null ? 0 : list.size();
+	}
+	
+	/**
+	 * 根据tableId获取集合
+	 * @param tableId
+	 * @return
+	 */
+	private List<Column> listByTableId(Integer tableId) {
+		return find(
+				"select a.* from table_column a where a.table_id = ? order by a.id asc",
+				tableId);
 	}
 
 }
