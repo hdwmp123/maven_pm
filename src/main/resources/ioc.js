@@ -1,14 +1,28 @@
 var ioc = {
-    dao : {
-        type : "org.nutz.dao.impl.NutDao",
-        args : [{refer:"dataSource"}]
+    conf : {
+        type : "org.nutz.ioc.impl.PropertiesProxy",
+        fields : {
+            paths : [ "config.properties" ]
+        }
     },
     dataSource : {
         type : "org.nutz.dao.impl.SimpleDataSource",
         fields : {
-            jdbcUrl : 'jdbc:mysql://localhost:3306/forwork?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF8&amp;characterSetResults=UTF8',
-            username : 'root',
-            password : 'root'
+            jdbcUrl : {
+                java : "$conf.get('jdbcUrl')"
+            },
+            username : {
+                java : "$conf.get('user')"
+            },
+            password : {
+                java : "$conf.get('password')"
+            },
         }
+    },
+    dao : {
+        type : "org.nutz.dao.impl.NutDao",
+        args : [ {
+            refer : "dataSource"
+        } ]
     }
 };
