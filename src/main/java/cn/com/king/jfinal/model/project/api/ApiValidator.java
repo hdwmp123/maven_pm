@@ -11,6 +11,7 @@ public class ApiValidator extends Validator {
 	}
 
 	protected void validate(Controller controller) {
+		actionKey = getActionKey();
 		if (actionKey.equals("/api/save") || actionKey.equals("/api/update")) {
 			validateRequiredString("api.project_id", "project_idMsg", "请选择隶属项目!");
 			validateRequiredString("api.module_id", "module_idMsg", "请选择隶属模块!");
