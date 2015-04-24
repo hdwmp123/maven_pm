@@ -1,8 +1,8 @@
 <#include "/common/_layout.html" />
 <@layout>
-<h1><a href="/column">列管理</a> --&gt; 创建列</h1>
+<h1><a href="${BASE_PATH!}/column">列管理</a> --&gt; 创建列</h1>
 <div class="form_box">
-	<form action="/column/save" method="post">
+	<form action="${BASE_PATH!}/column/save" method="post">
 		<#include "_form.html" />
 	</form>
 </div>

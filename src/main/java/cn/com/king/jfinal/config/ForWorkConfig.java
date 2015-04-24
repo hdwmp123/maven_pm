@@ -22,6 +22,7 @@ import com.jfinal.config.JFinalConfig;
 import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
 import com.jfinal.core.JFinal;
+import com.jfinal.ext.handler.ContextPathHandler;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 
@@ -64,9 +65,12 @@ public class ForWorkConfig extends JFinalConfig {
     }
 
     public void configHandler(Handlers handlers) {
+        //该处理器将request.getContextPath()存储在BASE_PATH中，可以解决路径问题
+        ContextPathHandler path = new ContextPathHandler("BASE_PATH");
+        handlers.add(path);
     }
 
     public static void main(String args[]) {
-        JFinal.start("src/main/webapp", 81, "/", 5);
+        JFinal.start("src/main/webapp", 81, "/pm", 5);
     }
 }

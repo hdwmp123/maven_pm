@@ -27,7 +27,7 @@ $(document).ready(function(){
 	var initSel_project_id = function(callback){
 		SelectTool.initSelectData({
 			elId:"project_id",
-			url:"/project/listAll",
+			url:"${BASE_PATH!}/project/listAll",
 			valueName:"id",
 			textName:"project_name",
 			defaultValue:"${(table.project_id)!}",

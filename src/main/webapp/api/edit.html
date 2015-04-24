@@ -1,8 +1,8 @@
 <#include "/common/_layout.html" />
 <@layout>
-<h1><a href="/api"><b>API管理</b></a> --&gt; 修改API</h1>
+<h1><a href="${BASE_PATH!}/api"><b>API管理</b></a> --&gt; 修改API</h1>
 <div class="form_box">
-	<form action="/api/update" method="post">
+	<form action="${BASE_PATH!}/api/update" method="post">
 		<#include "_form.html" />
 	</form>
 </div>

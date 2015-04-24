@@ -2,9 +2,9 @@
 <#include "/common/_search_form.html"/>
 <@layout>
 <h1>API管理&nbsp;&nbsp;
-<a href="/api/add">创建API</a>
+<a href="${BASE_PATH!}/api/add">创建API</a>
 </h1>
-<@search_form actionUrl="/api/page">
+<@search_form actionUrl="${BASE_PATH!}/api/page">
 隶属项目：
 <select name="project_id" id="project_id">
 </select>
@@ -16,7 +16,7 @@ $(document).ready(function(){
 	var initSel_project_id = function(callback){
 		SelectTool.initSelectData({
 			elId:"project_id",
-			url:"/project/listAll",
+			url:"${BASE_PATH!}/project/listAll",
 			postData:{},
 			valueName:"id",
 			textName:"project_name",
@@ -28,7 +28,7 @@ $(document).ready(function(){
 	var initSel_module_id = function(callback){
 		SelectTool.initSelectData({
 			elId:"module_id",
-			url:"/module/listByProjectId",
+			url:"${BASE_PATH!}/module/listByProjectId",
 			postData:{"project_id":$("#project_id").val()},
 			valueName:"id",
 			textName:"module_name",

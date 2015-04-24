@@ -31,7 +31,7 @@ $(document).ready(function(){
 	var initSel_namespace = function(callback){
 		SelectTool.initSelectData({
 			elId:"namespace",
-			url:"/code_manager/listByNamespace",
+			url:"${BASE_PATH!}/code_manager/listByNamespace",
 			postData:{"namespace":"Namespace"},
 			valueName:"code",
 			textName:"name",
@@ -43,7 +43,7 @@ $(document).ready(function(){
 	var initSel_father_id = function(callback){
 		SelectTool.initSelectData({
 			elId:"father_id",
-			url:"/code_manager/listByNamespace",
+			url:"${BASE_PATH!}/code_manager/listByNamespace",
 			postData:{"namespace":"None"},
 			valueName:"id",
 			textName:"name",

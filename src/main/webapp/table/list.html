@@ -2,9 +2,9 @@
 <#include "/common/_search_form.html"/>
 <@layout>
 <h1>表管理&nbsp;&nbsp;
-<a href="/table/add">创建表</a>
+<a href="${BASE_PATH!}/table/add">创建表</a>
 </h1>
-<@search_form actionUrl="/table/page">
+<@search_form actionUrl="${BASE_PATH!}/table/page">
 隶属项目：
 <select name="project_id" id="project_id">
 </select>
@@ -14,7 +14,7 @@
 var initSel_project_id = function(callback){
 	SelectTool.initSelectData({
 		elId:"project_id",
-		url:"/project/listAll",
+		url:"${BASE_PATH!}/project/listAll",
 		postData:{},
 		valueName:"id",
 		textName:"project_name",

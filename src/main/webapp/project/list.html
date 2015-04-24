@@ -2,9 +2,9 @@
 <#include "/common/_search_form.html"/>
 <@layout>
 <h1>项目管理&nbsp;&nbsp;
-<a href="/project/add">创建项目</a>
+<a href="${BASE_PATH!}/project/add">创建项目</a>
 </h1>
-<@search_form actionUrl="/project/page" initSearch=true>
+<@search_form actionUrl="${BASE_PATH!}/project/page" initSearch=true>
 项目名称：<input type="text" name="project_name">
 <script type="text/javascript">
 </script>

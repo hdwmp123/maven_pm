@@ -2,9 +2,9 @@
 <#include "/common/_search_form.html"/>
 <@layout>
 <h1>模块管理&nbsp;&nbsp;
-<a href="/module/add">创建模块</a>
+<a href="${BASE_PATH!}/module/add">创建模块</a>
 </h1>
-<@search_form actionUrl="/module/page">
+<@search_form actionUrl="${BASE_PATH!}/module/page">
 隶属项目：
 <select name="project_id" id="project_id">
 </select>
@@ -18,7 +18,7 @@ $(document).ready(function(){
 	var initSel_project_id = function(callback){
 		SelectTool.initSelectData({
 			elId:"project_id",
-			url:"/project/listAll",
+			url:"${BASE_PATH!}/project/listAll",
 			postData:{},
 			valueName:"id",
 			textName:"project_name",
@@ -30,7 +30,7 @@ $(document).ready(function(){
 	var initSel_parent_id = function(callback){
 		SelectTool.initSelectData({
 			elId:"parent_id",
-			url:"/module/listByProjectId",
+			url:"${BASE_PATH!}/module/listByProjectId",
 			postData:{"project_id":$("#project_id").val()},
 			valueName:"id",
 			textName:"module_name",

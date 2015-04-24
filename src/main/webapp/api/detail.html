@@ -1,14 +1,14 @@
 <#include "/common/_layout.html" />
 <@layout>
-<h1><a href="/api"><b>API管理</b></a>--&gt; API详情</h1>
+<h1><a href="${BASE_PATH!}/api"><b>API管理</b></a>--&gt; API详情</h1>
 <div class="form_box">
     <form>
         <fieldset class="solid">
             <legend>API详情 &nbsp;
             <#if (api.id)??>
-            <a href="/api/edit/${api.id}">修改</a></legend>
+            <a href="${BASE_PATH!}/api/edit/${api.id}">修改</a></legend>
             <#else>
-            <a href="/api/add">新建</a></legend>
+            <a href="${BASE_PATH!}/api/add">新建</a></legend>
             </#if>
             <input type="hidden" name="api.id" value="${(api.id)!}" />
             <div>

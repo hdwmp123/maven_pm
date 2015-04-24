@@ -2,9 +2,9 @@
 <#include "/common/_search_form.html"/>
 <@layout>
 <h1>列管理&nbsp;&nbsp;
-<a href="/column/add">创建列</a>
+<a href="${BASE_PATH!}/column/add">创建列</a>
 </h1>
-<@search_form actionUrl="/column/page" initSearch=false>
+<@search_form actionUrl="${BASE_PATH!}/column/page" initSearch=false>
 隶属项目：
 <select name="project_id" id="project_id">
 </select>
@@ -16,7 +16,7 @@
 		var initSel_project_id = function(callback){
 			SelectTool.initSelectData({
 				elId:"project_id",
-				url:"/project/listAll",
+				url:"${BASE_PATH!}/project/listAll",
 				postData:{"project_id":$("#project_id").val()},
 				valueName:"id",
 				textName:"project_name",
@@ -28,7 +28,7 @@
 		var initSel_table_id = function(callback){
 			SelectTool.initSelectData({
 				elId:"table_id",
-				url:"/table/listByProjectId",
+				url:"${BASE_PATH!}/table/listByProjectId",
 				postData:{"project_id":$("#project_id").val()},
 				valueName:"id",
 				textName:"table_name",

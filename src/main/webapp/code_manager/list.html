@@ -2,9 +2,9 @@
 <#include "/common/_search_form.html"/>
 <@layout>
 <h1>常量管理&nbsp;&nbsp;
-<a href="/code_manager/add">创建常量</a>
+<a href="${BASE_PATH!}/code_manager/add">创建常量</a>
 </h1>
-<@search_form actionUrl="/code_manager/page">
+<@search_form actionUrl="${BASE_PATH!}/code_manager/page">
 命名空间：
 <select name="namespace" id="namespace">
 </select>
@@ -16,7 +16,7 @@ $(document).ready(function(){
 	var initSel_namespace = function(callback){
 		SelectTool.initSelectData({
 			elId:"namespace",
-			url:"/code_manager/listByNamespace",
+			url:"${BASE_PATH!}/code_manager/listByNamespace",
 			postData:{"namespace":"Namespace"},
 			valueName:"code",
 			textName:"name",
@@ -28,7 +28,7 @@ $(document).ready(function(){
 	var initSel_father_id = function(callback){
 		SelectTool.initSelectData({
 			elId:"father_id",
-			url:"/code_manager/listByNamespace",
+			url:"${BASE_PATH!}/code_manager/listByNamespace",
 			postData:{"namespace":"None"},
 			valueName:"id",
 			textName:"name",

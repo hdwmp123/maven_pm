@@ -48,7 +48,7 @@ $(document).ready(function(){
 	var initSel_project_id = function(callback){
 		SelectTool.initSelectData({
 			elId:"project_id",
-			url:"/project/listAll",
+			url:"${BASE_PATH!}/project/listAll",
 			valueName:"id",
 			textName:"project_name",
 			defaultValue:"${(column.project_id)!}",
@@ -58,7 +58,7 @@ $(document).ready(function(){
 	var initSel_table_id = function(callback){
 		SelectTool.initSelectData({
 			elId:"table_id",
-			url:"/table/listByProjectId",
+			url:"${BASE_PATH!}/table/listByProjectId",
 			postData:{"project_id":$("#project_id").val()},
 			valueName:"id",
 			textName:"table_name",

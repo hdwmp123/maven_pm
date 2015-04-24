@@ -87,7 +87,7 @@
 				<configuration>
 					<scanIntervalSeconds>0</scanIntervalSeconds>
 					<webAppConfig>
-						<contextPath>/</contextPath>
+						<contextPath>/pm</contextPath>
 					</webAppConfig>
 					<connectors>
 						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">

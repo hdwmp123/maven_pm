@@ -2,7 +2,7 @@
 	<legend>
 	创建API
 	<#if (api.id)??>
-	<a href="/api/detail/${api.id}">详情</a>
+	<a href="${BASE_PATH!}/api/detail/${api.id}">详情</a>
 	</#if>
 	</legend>
 	<input type="hidden" name="api.id" value="${(api.id)!}" />
@@ -70,7 +70,7 @@ $(document).ready(function(){
 	var initSel_project_id = function(callback){
 		SelectTool.initSelectData({
 			elId:"project_id",
-			url:"/project/listAll",
+			url:"${BASE_PATH!}/project/listAll",
 			postData:{},
 			valueName:"id",
 			textName:"project_name",
@@ -81,7 +81,7 @@ $(document).ready(function(){
 	var initSel_module_id = function(callback){
 		SelectTool.initSelectData({
 			elId:"module_id",
-			url:"/module/listByProjectId",
+			url:"${BASE_PATH!}/module/listByProjectId",
 			postData:{"project_id":$("#project_id").val()},
 			valueName:"id",
 			textName:"module_name",
@@ -92,7 +92,7 @@ $(document).ready(function(){
 	var initSel_api_request_type = function(callback){
 		SelectTool.initSelectData({
 			elId:"api_request_type",
-			url:"/code_manager/listByNamespace",
+			url:"${BASE_PATH!}/code_manager/listByNamespace",
 			postData:{"namespace":"RequestType"},
 			valueName:"code",
 			textName:"name",
@@ -103,7 +103,7 @@ $(document).ready(function(){
 	var initSel_api_response_type = function(callback){
 		SelectTool.initSelectData({
 			elId:"api_response_type",
-			url:"/code_manager/listByNamespace",
+			url:"${BASE_PATH!}/code_manager/listByNamespace",
 			postData:{"namespace":"ResponseType"},
 			valueName:"code",
 			textName:"name",

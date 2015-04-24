@@ -1,8 +1,8 @@
 <#include "/common/_layout.html" />
 <@layout>
-<h1><a href="/project">项目管理 </a> --&gt; 修改项目</h1>
+<h1><a href="${BASE_PATH!}/project">项目管理 </a> --&gt; 修改项目</h1>
 <div class="form_box">
-	<form action="/project/update" method="post">
+	<form action="${BASE_PATH!}/project/update" method="post">
 		<#include "_form.html" />
 	</form>
 </div>
